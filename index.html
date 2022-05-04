@@ -98,7 +98,7 @@
 
     function start() {
         $("#btn").attr("disabled", true);
-        totalMilliSeconds = $("input:radio[name=type]:checked").val() * 5;
+        totalMilliSeconds = $("input:radio[name=type]:checked").val() * 60;
         jobId = setInterval(function() {
             // if (totalMilliSeconds <= 0) {
             //     clearInterval(jobId);
