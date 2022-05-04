@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<head>
+    <title>泡面盖子</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .pure-button {
+            font-family: inherit;
+            font-size: 100%;
+            padding: .5em 1em;
+            color: rgba(0, 0, 0, .8);
+            border: none transparent;
+            background-color: #e6e6e6;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+        
+        .pure-button-active {
+            display: inline-block;
+            line-height: normal;
+            white-space: nowrap;
+            vertical-align: middle;
+            text-align: center;
+            cursor: pointer;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        .l-box h3 {
+            text-align: center;
+        }
+        
+        label {
+            margin-right: 15px;
+            line-height: 32px;
+        }
+        
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            transition: 0.2s all linear;
+            outline: none;
+            margin-right: 5px;
+            position: relative;
+            top: 4px;
+        }
+        
+        input:checked {
+            border: 10px solid black;
+        }
+        
+        .type {
+            margin: 2%;
+        }
+    </style>
+</head>
+
+<body style="margin:2%;">
+    <h1 style="text-align: center;">泡面盖子！</h1>
+    <fieldset>
+        <legend>选择你的面:</legend>
+        <div class="type">
+            <input type="radio" id="type-1" name="type" value="3" checked>
+            <label for="type-1">泡面类(口感较硬的泡面)</label>
+        </div>
+
+        <div class="type">
+            <input type="radio" id="type-2" name="type" value="4">
+            <label for="type-2">粉丝类</label>
+        </div>
+
+        <div class="type">
+            <input type="radio" id="type-3" name="type" value="5">
+            <label for="type-3">拌面类</label>
+        </div>
+    </fieldset>
+    <button id="btn" class="pure-button pure-button-active" onclick="start()" type="button">Kindle已盖好，开始！</button>
+    <div>
+        <h1 id="Time" name="Time" style="text-align: center;"></h1>
+        <img id="OkImg" src="./ok.jpg" style="display:none;">
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.0/jquery.min.js"></script>
+<script>
+    var jobId = 0;
+    var totalMilliSeconds = 0;
+
+    function start() {
+        $("#btn").attr("disabled", true);
+        totalMilliSeconds = $("input:radio[name=type]:checked").val() * 5;
+        jobId = setInterval(function() {
+            // if (totalMilliSeconds <= 0) {
+            //     clearInterval(jobId);
+            // }
+            totalMilliSeconds -= 1;
+            if (totalMilliSeconds == 0) {
+                $("#Time").text("");
+                $("#OkImg").show();
+                $("#btn").attr("disabled", false);
+            }
+            var minute = parseInt(totalMilliSeconds / 60);
+            var milliSeconds = totalMilliSeconds - 60 * minute;
+            $("#Time").text(minute + ":" + milliSeconds);
+        }, 1000)
+    }
+</script>
+
+</html>
