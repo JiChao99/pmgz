@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        .btn-wrapper {
+            text-align: center;
+            margin-top: 8px;
+        }
         .pure-button {
             font-family: inherit;
             font-size: 100%;
@@ -13,11 +17,10 @@
             border: none transparent;
             background-color: #e6e6e6;
             text-decoration: none;
-            border-radius: 2px;
+            border-radius: 4px;
         }
         
         .pure-button-active {
-            display: inline-block;
             line-height: normal;
             white-space: nowrap;
             vertical-align: middle;
@@ -63,11 +66,14 @@
         .type {
             margin: 2%;
         }
+        .img-wrapper {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body style="margin:2%;">
-    <h1 style="text-align: center;">泡面盖子！</h1>
+    <h1 style="margin-top:16px;text-align: center;">泡面盖子！</h1>
     <fieldset>
         <legend>选择你的面:</legend>
         <div class="type">
@@ -85,10 +91,14 @@
             <label for="type-3">五分钟：拌面类（重庆小面，麻酱凉皮）</label>
         </div>
     </fieldset>
-    <button id="btn" class="pure-button pure-button-active" onclick="start()" type="button">Kindle已盖好，开始！</button>
+    <div class="btn-wrapper">
+        <button id="btn" class="pure-button pure-button-active" onclick="start()" type="button">Kindle已盖好，开始！</button>
+    </div>
     <div>
         <h1 id="Time" name="Time" style="text-align: center;"></h1>
-        <img id="OkImg" src="./ok.jpg" style="display:none;">
+        <div class="img-wrapper">
+            <img id="OkImg" src="./ok.jpg" style="display:none;">
+        </div>
     </div>
 </body>
 <script src="https://cdn.staticfile.org/jquery/1.10.0/jquery.min.js"></script>
@@ -99,7 +109,7 @@
     function start() {
         $("#btn").attr("disabled", true);
         totalMilliSeconds = $("input:radio[name=type]:checked").val() * 60;
-        jobId = setInterval(function() {
+        jobId = setInterval(function () {
             // if (totalMilliSeconds <= 0) {
             //     clearInterval(jobId);
             // }
