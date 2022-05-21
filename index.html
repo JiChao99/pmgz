@@ -9,6 +9,7 @@
             text-align: center;
             margin-top: 8px;
         }
+        
         .pure-button {
             font-family: inherit;
             font-size: 100%;
@@ -66,6 +67,7 @@
         .type {
             margin: 2%;
         }
+        
         .img-wrapper {
             text-align: center;
         }
@@ -88,7 +90,7 @@
 
         <div class="type">
             <input type="radio" id="type-3" name="type" value="5">
-            <label for="type-3">五分钟：拌面类（重庆小面，麻酱凉皮）</label>
+            <label for="type-3">五分钟：拌面类(重庆小面，麻酱凉皮)</label>
         </div>
     </fieldset>
     <div class="btn-wrapper">
@@ -107,9 +109,10 @@
     var totalMilliSeconds = 0;
 
     function start() {
+        $("#btn").text("泡面中~");
         $("#btn").attr("disabled", true);
         totalMilliSeconds = $("input:radio[name=type]:checked").val() * 60;
-        jobId = setInterval(function () {
+        jobId = setInterval(function() {
             // if (totalMilliSeconds <= 0) {
             //     clearInterval(jobId);
             // }
@@ -117,6 +120,7 @@
             if (totalMilliSeconds == 0) {
                 $("#Time").text("");
                 $("#OkImg").show();
+                $("#btn").text("完成");
                 $("#btn").attr("disabled", false);
             }
             var minute = parseInt(totalMilliSeconds / 60);
